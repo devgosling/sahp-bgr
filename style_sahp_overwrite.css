@@ -34,3 +34,31 @@
 #showButton:hover {
     background-color: rgb(96, 166, 232);
 }
+
+#title {
+    display: flex;
+}
+
+#header_icon {
+    height: 100%;
+    padding-right: 10px;
+}
+
+#header_icon img {
+    height: 3vh;
+    position: relative;
+    transform: translate(-50%, -50%);
+    position: relative;
+    top: 40%;
+    left: 50%;
+    
+}
+
+#header_titleText {
+    height: 100%;
+    line-height: 5vh;
+
+    font-size: 3vh;
+    font-weight: 600;
+    color: var(--textsecond);
+}
