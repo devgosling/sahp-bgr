@@ -1,0 +1,16 @@
+:root {
+    --textprim: #bababa;
+    --textsecond: #ffffff;
+    --button: #2b2b2b;
+    --accent: #004656;
+    --buttonhover: #65d3ff;
+    --background: #1d1d1d;
+    --inputs: #121212;
+}
+
+.dotContent {
+    background-color: #65d3ff;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+}
