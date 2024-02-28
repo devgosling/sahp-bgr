@@ -18,3 +18,11 @@
 #searchbar input {
     color: var(--buttonhover);
 }
+
+.selected_extrawanted {
+    color: #60e7ff;
+}
+
+.extrawanted:hover {
+    color: #60e7ff;
+}
