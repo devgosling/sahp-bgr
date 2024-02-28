@@ -26,3 +26,11 @@
 .extrawanted:hover {
     color: #60e7ff;
 }
+
+#showAttorneysButton:hover {
+    background-color: rgb(96, 166, 232);
+}
+
+#showButton:hover {
+    background-color: rgb(96, 166, 232);
+}
