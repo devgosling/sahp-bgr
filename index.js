@@ -62,19 +62,79 @@ function startCalculating() {
     if (document.getElementById("checkbox_box").checked) shortMode = true
 
     let fineCollection = document.querySelectorAll(".selected")
-    for (var i = 0; i < fineCollection.length; i++) {
-        fineAmount = fineAmount + parseInt(fineCollection[i].querySelector(".fineAmount").getAttribute("data-fineamount"))
+    let fineCollectionWantedAmount = []
+    let fineCollectionFineAmount = []
+
+    for (var i = 0; i < fineCollection.length; i++) { 
+
+
+
+        let cache_wanted_amount = 0;
+
+        cache_wanted_amount = cache_wanted_amount + parseInt(fineCollection[i].querySelector(".wantedAmount").getAttribute("data-wantedamount"))
+        
+        cache_wanted_amount = cache_wanted_amount + fineCollection[i].querySelector(".wantedAmount").querySelectorAll(".selected_extrawanted").length
+        if (cache_wanted_amount > 5) cache_wanted_amount = 5
+
+        fineCollectionWantedAmount.push(cache_wanted_amount)
+
+
+        let cache_fine_amount = 0;
+
+        cache_fine_amount = cache_fine_amount + parseInt(fineCollection[i].querySelector(".fineAmount").getAttribute("data-fineamount"))
+
         let extrawanteds_found = fineCollection[i].querySelector(".wantedAmount").querySelectorAll(".selected_extrawanted")
         let extrafines_amount = 0
         for (let b = 0; b < extrawanteds_found.length; b++) {
-            if (extrawanteds_found[b].getAttribute("data-addedfine")) fineAmount = fineAmount + parseInt(extrawanteds_found[b].getAttribute("data-addedfine"))
+            if (extrawanteds_found[b].getAttribute("data-addedfine")) cache_fine_amount = cache_fine_amount + parseInt(extrawanteds_found[b].getAttribute("data-addedfine"))
             extrafines_amount = extrafines_amount + parseInt(extrawanteds_found[b].getAttribute("data-addedfine"))
         }
 
-        wantedAmount = wantedAmount + parseInt(fineCollection[i].querySelector(".wantedAmount").getAttribute("data-wantedamount"))
+        fineCollectionFineAmount.push(cache_fine_amount)
+
+    }
+
+    console.log(fineCollectionWantedAmount);
+    
+    let maxWanted = fineCollectionWantedAmount[0]; // initialize to the first value
+
+    for (let i = 1; i < fineCollectionWantedAmount.length; i++) {
+        if (fineCollectionWantedAmount[i] > maxWanted) {
+            maxWanted = fineCollectionWantedAmount[i];
+        }
+    }
+
+    let maxFine = fineCollectionFineAmount[0]; // initialize to the first value
+
+    for (let i = 1; i < fineCollectionFineAmount.length; i++) {
+        if (fineCollectionFineAmount[i] > maxFine) {
+            maxFine = fineCollectionFineAmount[i];
+        }
+    }
+
+    wantedAmount = maxWanted
+    fineAmount = maxFine
+   
+    if (wantedAmount == undefined) wantedAmount = 0
+    if (fineAmount == undefined) fineAmount = 0
+    
+    console.log("Largest Wanteds:" + maxWanted);  
+    console.log("Largest Fine:" + maxFine);  
+
+    for (var i = 0; i < fineCollection.length; i++) {
+        //fineAmount = fineAmount + parseInt(fineCollection[i].querySelector(".fineAmount").getAttribute("data-fineamount"))
+
+        let extrawanteds_found = fineCollection[i].querySelector(".wantedAmount").querySelectorAll(".selected_extrawanted")
+        let extrafines_amount = 0
+        for (let b = 0; b < extrawanteds_found.length; b++) {
+            //if (extrawanteds_found[b].getAttribute("data-addedfine")) fineAmount = fineAmount + parseInt(extrawanteds_found[b].getAttribute("data-addedfine"))
+            extrafines_amount = extrafines_amount + parseInt(extrawanteds_found[b].getAttribute("data-addedfine"))
+        }
+
+        //wantedAmount = wantedAmount + parseInt(fineCollection[i].querySelector(".wantedAmount").getAttribute("data-wantedamount"))
         
-        wantedAmount = wantedAmount + fineCollection[i].querySelector(".wantedAmount").querySelectorAll(".selected_extrawanted").length
-        if (wantedAmount > 5) wantedAmount = 5
+        //wantedAmount = wantedAmount + fineCollection[i].querySelector(".wantedAmount").querySelectorAll(".selected_extrawanted").length
+        //if (wantedAmount > 5) wantedAmount = 5
         
 
         const d = new Date();
