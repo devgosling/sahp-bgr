@@ -141,7 +141,7 @@ function startCalculating() {
         const localTime = d.getTime();
         const localOffset = d.getTimezoneOffset() * 60000;
         const utc = localTime + localOffset;
-        const offset = 1; // UTC of Germany Time Zone is +01.00
+        const offset = 2; // UTC of Germany Time Zone is +01.00
         const germany = utc + (3600000 * offset);
         let now = new Date(germany);
 
