@@ -218,7 +218,7 @@ function startCalculating() {
     }
 
     if (document.getElementById("reue_box").checked) {
-        reasonText += ` - Reue`
+        reasonText += ` - StGB §35`
     }
 
     if (systemwanteds != "") {
